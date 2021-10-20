@@ -1,0 +1,25 @@
+{
+    "name": "APRSMessageHandler",
+    "version": "0.0.1",
+    "description": "Lib for generating simple APRS (ham radio) Messages",
+    "keywords": "APRS, ham radio, decoder",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/devcpu/aprsmessagehandler.git"
+    },
+    "authors":
+    [
+      {
+        "name": "Johannes G.  Arlt",
+        "email": "develop@arltus.com",
+        "url": "",
+        "maintainer": true
+      }
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "dependencies": {},
+    "frameworks": "*",
+    "platforms": "*"
+  }
