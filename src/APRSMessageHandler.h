@@ -4,7 +4,7 @@
  * File Created: 2020-11-11 20:13
  * Author: (DL7UXA) Johannes G.  Arlt (dl7uxa@arltus.de)
  * -----
- * Last Modified: 2021-10-20 0:29
+ * Last Modified: 2021-10-20 2:25
  * Modified By: (DL7UXA) Johannes G.  Arlt (dl7uxa@arltus.de>)
  * -----
  * Copyright © 2019 - 2021 (DL7UXA) Johannes G.  Arlt
@@ -32,12 +32,8 @@
   enum aprs_symbol_table_e { primary = '/', alternate = '\\' };
 */
 
-
-
 class APRS_MSG {
  public:
-
-
   APRS_MSG();
   APRS_MSG(String sender_call, String sender_call_ext, char aprs_symbol_table, char aprs_symbol);
   virtual ~APRS_MSG();
@@ -47,14 +43,14 @@ class APRS_MSG {
   String computeGPSMoveInfo(double speed, double course, double altitude);
   String computeTimestamp(double day, double hour, double minute);
   String computeMSG(String to, String msg);
-  
+
   /**
- * @brief round and convert 100% humidity to APRS syle 00
- *
- * @param char* rv: return value
- * @param float humidity: humidity
- * @return char*
- */
+   * @brief round and convert 100% humidity to APRS syle 00
+   *
+   * @param char* rv: return value
+   * @param float humidity: humidity
+   * @return char*
+   */
   static String calcHumidity(float humidity);
 
   /**
@@ -128,8 +124,6 @@ class APRS_MSG {
   static double_t feed2meter(double_t feed);
   static double_t meter2feed(double_t meter);
 
-  
-
  private:
   String _sender_call;
   String _sender_call_ext;
@@ -139,7 +133,6 @@ class APRS_MSG {
   char _APRSMoveField[32] = {0};
   char _APRSPosField[64] = {0};
   char _APRSTimeStamp[16] = {0};
-
 
   // void computeWXField(void);
   // void computeGPSMoveInfo(void);

@@ -17,5 +17,3 @@ See examples and test dir
 
 * Johannes G.  Arlt
 * develop@arltus.com
-
-

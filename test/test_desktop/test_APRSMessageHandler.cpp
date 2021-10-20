@@ -4,20 +4,17 @@
  * File Created: 2021-10-18 21:33
  * Author: (DL7UXA) Johannes G.  Arlt (dl7uxa@arltus.de)
  * -----
- * Last Modified: 2021-10-20 2:15
+ * Last Modified: 2021-10-20 2:28
  * Modified By: (DL7UXA) Johannes G.  Arlt (dl7uxa@arltus.de>)
  * -----
- * Copyright © 2021 - 2021 (DL7UXA) Johannes G.  Arlt 
+ * Copyright © 2021 - 2021 (DL7UXA) Johannes G.  Arlt
  * License: MIT License  http://www.opensource.org/licenses/MIT
  */
 
 #include <APRSMessageHandler.h>
 #include <unity.h>
 
-void test_a_well_known_truth(void)
-{
-    TEST_ASSERT_EQUAL(1, 1);
-}
+void test_a_well_known_truth(void) { TEST_ASSERT_EQUAL(1, 1); }
 
 // void test_simple_aprs_msg(void) {
 //     APRSMessage amsg;
@@ -27,9 +24,8 @@ void test_a_well_known_truth(void)
 // }
 
 // void test_decode_aprs_msg(void) {
-//     String str = String("AB1CDE-10>APRS,AB1CDE:=1234.12N/12345.12E-QTH von AB1CDE");
-//     APRSMessage msg;
-//     msg.decode(str);
+//     String str = String("AB1CDE-10>APRS,AB1CDE:=1234.12N/12345.12E-QTH von
+//     AB1CDE"); APRSMessage msg; msg.decode(str);
 //     assertEqual_STRING(msg.getRawBody().c_str(), "Hallo Welt");
 
 // }
@@ -61,23 +57,21 @@ void test_a_well_known_truth(void)
 
 #include <Arduino.h>
 void setup() {
-    // NOTE!!! Wait for >2 secs
-    // if board doesn't support software reset via Serial.DTR/RTS
-    delay(200);
-    UNITY_BEGIN();    // IMPORTANT LINE!
-    RUN_TEST(test_a_well_known_truth);
-    delay(500);
+  // NOTE!!! Wait for >2 secs
+  // if board doesn't support software reset via Serial.DTR/RTS
+  delay(200);
+  UNITY_BEGIN(); // IMPORTANT LINE!
+  RUN_TEST(test_a_well_known_truth);
+  delay(500);
 }
 
-void loop() {
-    delay(500);
-}
+void loop() { delay(500); }
 
 #else
 
 int main(int argc, char **argv) {
-    test_a_well_known_truth();
-    return 0;
+  test_a_well_known_truth();
+  return 0;
 }
 
 #endif

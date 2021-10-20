@@ -20,26 +20,26 @@
 String APRS_MSG::computeAPRSWXField(float temp, float pressure, float humidity, String sensor) {
   char buf[64] = {0};
   snprintf(buf, sizeof(buf) - 1, "%s/%sg%st%03dr%sp%sP%sh%sb%05d Sensor: %s",
-           "...",                                                      // winddirection 0-360
-           "...",                                                      // windspeed in mph
-           "...",                                                      // gust
+           "...",                                           // winddirection 0-360
+           "...",                                           // windspeed in mph
+           "...",                                           // gust
            static_cast<int8_t>(round(APRS_MSG::c2f(temp))), // temperature
-           "...",                                                      // rainfalllasthourhinch
-           "...",                                                      // rainfalllast24hinch
-           "...",                                                      // rainfallsinceMidnightinch
-           APRS_MSG::calcHumidity(humidity).c_str(),       // humidity
+           "...",                                           // rainfalllasthourhinch
+           "...",                                           // rainfalllast24hinch
+           "...",                                           // rainfallsinceMidnightinch
+           APRS_MSG::calcHumidity(humidity).c_str(),        // humidity
            static_cast<uint8_t>(round(pressure * 10)),      // pressure @FIXME / 100.00L * 10 ??
-           sensor.c_str());                                          // wx sensor @FIXME sensor from i2c-scanner, not
-                                                                       // staticly
+           sensor.c_str());                                 // wx sensor @FIXME sensor from i2c-scanner, not
+                                                            // staticly
   return String(buf);
 }
 
 String APRS_MSG::calcHumidity(float humidity) {
   char buf[4] = {0};
   if (humidity == 100) {
-    snprintf(buf, sizeof(buf)-1, "%s", "00");
+    snprintf(buf, sizeof(buf) - 1, "%s", "00");
   } else {
-    snprintf(buf, sizeof(buf)-1, "%02u", static_cast<uint8_t>(round(humidity)));
+    snprintf(buf, sizeof(buf) - 1, "%02u", static_cast<uint8_t>(round(humidity)));
   }
   return String(buf);
 }
@@ -48,41 +48,26 @@ String APRS_MSG::computeAPRSPos(double lat, double lng) {
   char buf[64] = {0};
   char buf_lat[16] = {0};
   char buf_lng[16] = {0};
-  snprintf(buf, sizeof(buf)-1, "%s%c%s%c", 
-    dc2gms(lat, false).c_str(), 
-    _aprs_symbol_table,
-    dc2gms(lng, true).c_str(), 
-    _aprs_symbol);
+  snprintf(buf, sizeof(buf) - 1, "%s%c%s%c", dc2gms(lat, false).c_str(), _aprs_symbol_table, dc2gms(lng, true).c_str(),
+           _aprs_symbol);
   return String(buf);
 }
 
 String APRS_MSG::computeGPSMoveInfo(double speed, double course, double altitude) {
-  snprintf(_APRSMoveField, sizeof(_APRSMoveField)-1, "%03.0f/%03.0f/A=%06.0f", 
-    speed, 
-    course,
-    altitude);
+  snprintf(_APRSMoveField, sizeof(_APRSMoveField) - 1, "%03.0f/%03.0f/A=%06.0f", speed, course, altitude);
   return String(_APRSMoveField);
 }
 
 String APRS_MSG::computeTimestamp(double day, double hour, double minute) {
   char buf[16] = {0};
-  snprintf(buf, sizeof(buf) - 1, "%02d%02d%02dz", 
-    static_cast<uint8_t>(day), 
-    static_cast<uint8_t>(hour), 
-    static_cast<uint8_t>(minute));
+  snprintf(buf, sizeof(buf) - 1, "%02d%02d%02dz", static_cast<uint8_t>(day), static_cast<uint8_t>(hour),
+           static_cast<uint8_t>(minute));
   return String(buf);
 }
 
 String APRS_MSG::computeMSG(String to, String msg) {
-  return _sender_call 
-          + String("-") 
-          + _sender_call_ext 
-          + String(">APRS:@") 
-          + String(_APRSTimeStamp)
-          + String(_APRSPosField)
-          + String(_APRSMoveField) 
-          + String(" ") 
-          + msg;
+  return _sender_call + String("-") + _sender_call_ext + String(">APRS:@") + String(_APRSTimeStamp) +
+         String(_APRSPosField) + String(_APRSMoveField) + String(" ") + msg;
 }
 
 // char* APRS_MSG::getAPRSTxPos(char* retvar) {
