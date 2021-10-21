@@ -4,7 +4,7 @@
  * File Created: 2020-11-11 20:14
  * Author: (DL7UXA) Johannes G.  Arlt (dl7uxa@arltus.de)
  * -----
- * Last Modified: 2021-10-20 0:46
+ * Last Modified: 2021-10-20 20:01
  * Modified By: (DL7UXA) Johannes G.  Arlt (dl7uxa@arltus.de>)
  * -----
  * Copyright © 2019 - 2021 (DL7UXA) Johannes G.  Arlt
@@ -14,6 +14,15 @@
 #include <APRSMessageHandler.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+APRS_MSG::APRS_MSG(String sender_call, String sender_call_ext, char aprs_symbol_table, char aprs_symbol) {
+  _sender_call = sender_call;
+  _sender_call_ext = sender_call_ext;
+  _aprs_symbol_table = aprs_symbol_table;
+  _aprs_symbol = _aprs_symbol;
+};
+
+APRS_MSG::~APRS_MSG(){};
 
 // ".../...g...t...r...p...P...h..b...."
 
